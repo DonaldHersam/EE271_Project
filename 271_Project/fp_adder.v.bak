@@ -1,0 +1,583 @@
+DESIGN
+
+////////////// S1 is the signal we receive from fpga when we press the button to change state.
+
+   
+
+// Code your design here
+
+module fpa(clk,S1,inp,sum,over,under);             
+
+  input [15:0]inp; /////////////////////////////////////////// input
+
+  input clk,S1;
+
+  output [15:0]sum;
+
+  output reg over,under;
+
+
+  reg f_over,f_under,fover;
+
+  reg a;
+
+  
+
+
+  
+
+  reg [1:0]count; //////////////////// state transitioning.
+
+  reg [4:0]exp1,exp2,exp,exp_3,exp_4,exp_5,exp3,exp4,exp_6,exp5,exp_7,exp6,exp7,exp_2,exp_8,exp8;
+
+  reg [12:0]frac1,frac2,frac_1,frac_2;
+
+  reg [4:0]exp_diff;
+
+  
+
+  reg sig1,sig2;
+
+  reg [15:0]sum1,sum_1;
+
+  
+
+  reg [14:0]number1,number2;
+
+  
+
+  reg [14:0]fsum,fsum_1;  
+
+  reg [14:0]add,add_1,add2;
+
+
+  reg [14:0]num1,num2;
+
+  
+
+  reg[12:0]store,store_1,store_2,store2,store3,store_3;
+
+  
+
+  reg sign,sign_1,sign_2,sign_3,sign_4,sign_5,sign_6;
+
+  reg[4:0] n,n_1;
+
+  
+
+  reg z,z_1;
+
+ 
+
+ reg pushout,pushout_1,pushout_2,pushout_3,pushout_4,pushout_5,pushout_6,pushout_7;
+
+ reg pushout_8,pushout_9,pushout_10,pushout_11;
+
+   
+
+  assign sum=pushout_10?{sign_5,exp_8,store3[11:2]}:’bz; //////////// display on 7 segment. 
+
+
+
+  
+
+  always@(posedge clk)
+
+    begin
+
+      if(S1 && (count===2'd0||count===2'bxx))
+
+       begin
+
+         $display("reset at time %d",$time); ///////////// arduino 
+
+         count=2'b00;
+
+         over<=0;
+
+         under<=0;
+
+         fsum<=0;
+
+         num1<=0;
+
+         num2<=0;
+
+         sig1<=0;
+
+         sig2<=0;
+
+         a<=0;
+
+         n<=0;
+
+         pushout<=1;
+
+         pushout_1<=0;pushout_2<=0;pushout_3<=0;pushout_4<=0;pushout_5<=0;pushout_6<=0;pushout_7<=0;pushout_8<=0;
+
+         pushout_9<=0;pushout_10<=0;pushout_11<=0;
+
+         sum1<=0;
+
+         add2<=0;
+
+         
+
+         count<=count+1; 
+
+       end
+
+      else if(S1 && (count===2'b01))
+
+       begin
+
+         $display("input1 is %h at time %d",inp,$time); ///////////// arduino display
+
+         sig1<= inp[15];
+
+         exp1<= inp[14:10];
+
+         frac1[11:0]<= {inp[9:0],2'b00};
+
+         count<=count+1; 
+
+        
+
+         
+
+         if(inp==16'd0)
+
+           frac1[12]<=0;
+
+         else 
+
+           frac1[12]<=1;
+
+         
+
+         pushout_1<=pushout;
+
+       end
+
+      
+
+      else if(S1 && (count===2'b10))
+
+       begin
+
+         $display("input2 is %h at time %d",inp,$time); ///////////// arduino display
+
+         sig2<= inp[15];
+
+         exp2<= inp[14:10];
+
+         frac2[11:0]<={inp[9:0],2'b00};
+
+         count<=count+1; 
+
+         
+
+         
+
+         if(inp==16'd0)
+
+           frac2[12]<=0;
+
+         else 
+
+           frac2[12]<=1;
+
+         
+
+         pushout_2<=pushout_1;
+
+       end   
+
+        
+
+      else if( S1 && count===2'b11)
+
+         begin    
+
+             $display("FPA sum at time %d",$time);/////////////////////// arduino display.
+
+             count<=count+1;
+
+             a<=1;
+
+            pushout_3<=pushout_2;
+
+         end
+
+      else
+
+        $display("press switch for next state");
+
+    end           
+
+
+ always@(*)
+
+        begin
+
+          if(a)
+
+           if(exp1==exp2)
+
+               $display("equal exponents");
+
+           
+
+             else if(exp1<exp2)
+
+                   begin
+
+               
+
+                  frac_1=frac1>>(exp2-exp1);
+
+                  exp=exp2;
+
+                  frac_2=frac2; 
+
+                 end
+
+           
+
+             else 
+
+                 begin
+
+                  
+
+                  frac_2=frac2>>(exp1-exp2);
+
+                  exp=exp1;
+
+                  frac_1=frac1; 
+
+                 end   
+
+           
+
+            
+
+          number1 = (sig1==0)?{2'b00,frac_1}:(~{2'b00,frac_1}+1); 
+
+          number2 = (sig2==0)?{2'b00,frac_2}:(~{2'b00,frac_2}+1);
+
+          
+
+          
+
+        
+
+         
+
+          fsum_1=num1+num2;
+
+          
+
+          
+
+          add_1=(fsum[14]==0)?fsum:~fsum +1;
+
+          sign_1=fsum[14];
+
+          
+
+ 
+
+         f_over=add[14]^add[13];
+
+          ///////////// exp_4=exp_3
+
+          
+
+         if(fover==1'b0)
+
+           begin
+
+            store_1=add2[12:0];
+
+            exp6=exp_5;
+
+           end
+
+         else 
+
+           begin
+
+            store_1=add2[13:1];
+
+            exp6=exp_5+1;
+
+           end
+
+         
+
+        if(store==13'b0)
+
+          begin
+
+           exp7=5'd0;
+
+           store_2=store[11:2];    
+
+            z_1=0;
+
+          end
+
+        else 
+
+         begin
+
+           if(exp_6==5'd0) 
+
+            begin
+
+             under=1; 
+
+             store_2=store[11:2];
+
+             exp7=exp_6;
+
+              z_1=0;
+
+              n_1=0;
+
+            end
+
+           else if(store[12]==1'b1)
+
+            begin
+
+             // $display("yes");
+
+             store_2=store[11:2]; 
+
+             exp7=exp_6; 
+
+              z_1=0;
+
+              n_1=0;
+
+            end
+
+          else
+
+           begin
+
+ 
+
+            exp7=exp_6;
+
+            store_2=store;  
+
+             
+
+             
+
+           n_1=(!store[12:6])?(((!store[5:1])?12:((!store[5:2])?11:((!store[5:3])?10:((!store[5:4])?9:((!store[5])?8:7)))))): (!store[12:9])?((!store[8:7])?6:((!store[8])?5:4)):((!store[12:10])?3:((!store[12:11])?2:((!store[12])?1:0)));
+
+               
+
+             
+
+             z_1=1; 
+
+               
+
+        end
+
+         end    
+
+          if(z)
+
+            begin
+
+              store_3=store2<<n;
+
+              exp8=exp_7-n;
+
+            end
+
+          else begin
+
+            store_3=store2;
+
+            exp8=exp7; end
+
+        end
+
+  
+
+  always@(posedge clk)
+
+    begin
+
+      num1<=number1;
+
+      num2<=number2;
+
+      pushout_4<=pushout_3;
+
+      exp_2<=exp;
+
+      
+
+      fsum<=fsum_1;
+
+      exp_3<=exp_2;
+
+      pushout_5<=pushout_4;
+
+      
+
+      
+
+      add<=add_1;
+
+      sign<=sign_1;
+
+      pushout_6<=pushout_5;
+
+      exp_4<=exp_3;
+
+     
+
+      
+
+      fover<=f_over;
+
+      exp_5<=exp_4;
+
+      sign_2<=sign_1; 
+
+      add2<=add; 
+
+      pushout_7<=pushout_6; 
+
+     
+
+    
+
+      
+
+      store<=store_1;
+
+      exp_6<=exp6;
+
+      sign_3<=sign_2;
+
+      pushout_8<=pushout_7;
+
+     
+
+
+      
+
+      
+
+      
+
+      store2<=store_2;
+
+      n<=n_1;
+
+      z<=z_1;
+
+      exp_7<=exp7;
+
+      sign_4<=sign_3;
+
+      pushout_9<=pushout_8;
+
+      
+
+  
+
+      
+
+      store3<=store_3;
+
+      exp_8<=exp8;
+
+      sign_5<=sign_4;
+
+       pushout_10<=pushout_9;
+
+         
+
+    end 
+
+   
+
+endmodule 
+
+
+ TESTBENCH 
+
+
+
+
+module tb();
+
+  reg clk,S1;
+
+  reg [15:0]inp; //............ change it. 
+
+  wire [15:0]sum;
+
+  wire over,under;
+
+  
+
+  fpa f1(clk,S1,inp,sum,over,under);
+
+  
+
+  initial begin
+
+    S1=0;
+
+    clk=0;
+
+  end
+
+  
+
+  initial begin
+
+    repeat(40)
+
+     #5 clk=~clk;
+
+  end
+
+  
+
+  initial begin
+
+    #4 S1=1; inp=-16'hF;
+
+    //#10 S1=0;
+
+    #10 S1=1; inp=16’h4300; // works well with negative numbers such as C300 also. 
+
+   // #10 S1=0;
+
+    #10 S1=1; inp=16'h4480;
+
+    #10 S1=1;
+
+    #10 S1=1;
+
+    #10 S1=0;
+
+
+  end
+
+    
+
+endmodule 
