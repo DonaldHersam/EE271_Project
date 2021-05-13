@@ -354,3 +354,30 @@ HEX5[5] <= hex5[5].DB_MAX_OUTPUT_PORT_TYPE
 HEX5[6] <= hex5[6].DB_MAX_OUTPUT_PORT_TYPE
 
 
+|fp_adder|char_to_binary:cb1
+new_key => binary_char[0]~reg0.CLK
+new_key => binary_char[1]~reg0.CLK
+new_key => binary_char[2]~reg0.CLK
+new_key => binary_char[3]~reg0.CLK
+new_key_char[0] => Mux0.IN17
+new_key_char[0] => Mux1.IN17
+new_key_char[0] => Mux2.IN17
+new_key_char[0] => Mux3.IN17
+new_key_char[1] => Mux0.IN16
+new_key_char[1] => Mux1.IN16
+new_key_char[1] => Mux2.IN16
+new_key_char[1] => Mux3.IN16
+new_key_char[2] => Mux0.IN15
+new_key_char[2] => Mux1.IN15
+new_key_char[2] => Mux2.IN15
+new_key_char[2] => Mux3.IN15
+new_key_char[3] => Mux0.IN14
+new_key_char[3] => Mux1.IN14
+new_key_char[3] => Mux2.IN14
+new_key_char[3] => Mux3.IN14
+binary_char[0] <= binary_char[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+binary_char[1] <= binary_char[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+binary_char[2] <= binary_char[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+binary_char[3] <= binary_char[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

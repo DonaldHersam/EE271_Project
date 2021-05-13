@@ -42,6 +42,8 @@ module fp_adder(clkfast,S1,inp,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3,
   reg sign,sign_1,sign_2,sign_3,sign_4,sign_5,sign_6;
   reg[4:0] n,n_1;
   
+  wire [3:0] binary_char;
+  
   reg z,z_1;
  
  reg pushout,pushout_1,pushout_2,pushout_3,pushout_4,pushout_5,pushout_6,pushout_7;
@@ -55,6 +57,7 @@ module fp_adder(clkfast,S1,inp,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3,
 clock_dividertest cd (clkfast, clk);
 referenceKeypad k1(LEDR, GPIO_1, clk, new_key, new_key_char);
 display d1(new_key, new_key_char, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+char_to_binary cb1(new_key, new_key_char, binary_char);
 
   
   always@(posedge clk)
@@ -392,6 +395,32 @@ always@(posedge clk) begin
 	end;
 end
 
+endmodule
+
+
+
+
+
+
+module char_to_binary(input new_key, input [3:0] new_key_char, output reg [3:0] binary_char);
+always@(posedge new_key) begin
+	case (new_key_char) 
+		 0 : binary_char <= ~4'b0001; // 1
+		 1 : binary_char <= ~4'b0010; // 2
+		 2 : binary_char <= ~4'b0011; // 3
+		 3 : binary_char <= ~4'b1010; // A
+		 4 : binary_char <= ~4'b0100; // 4
+		 5 : binary_char <= ~4'b0101; // 5
+		 6 : binary_char <= ~4'b0110; // 6
+		 7 : binary_char <= ~4'b1011; // b
+		 8 : binary_char <= ~4'b0111; // 7
+		 9 : binary_char <= ~4'b1000; // 8
+		10 : binary_char <= ~4'b1001; // 9
+		11 : binary_char <= ~4'b1100; // C
+		13 : binary_char <= ~4'b0000; // 0
+		15 : binary_char <= ~4'b1101; // d
+	endcase
+end
 endmodule
 
 
