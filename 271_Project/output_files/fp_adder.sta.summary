@@ -1,0 +1,185 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'a'
+Slack : -5.114
+TNS   : -125.353
+
+Type  : Slow 1200mV 85C Model Setup 'clock_dividertest:cd|clock_out'
+Slack : -5.078
+TNS   : -356.830
+
+Type  : Slow 1200mV 85C Model Setup 'clkfast'
+Slack : -4.026
+TNS   : -34.708
+
+Type  : Slow 1200mV 85C Model Setup 'store[0]'
+Slack : -2.596
+TNS   : -9.174
+
+Type  : Slow 1200mV 85C Model Setup 'referenceKeypad:k1|new_key'
+Slack : -1.729
+TNS   : -12.013
+
+Type  : Slow 1200mV 85C Model Hold 'clock_dividertest:cd|clock_out'
+Slack : 0.101
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'store[0]'
+Slack : 0.244
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clkfast'
+Slack : 0.427
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'referenceKeypad:k1|new_key'
+Slack : 0.439
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'a'
+Slack : 0.879
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clkfast'
+Slack : -3.000
+TNS   : -32.463
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock_dividertest:cd|clock_out'
+Slack : -1.403
+TNS   : -329.705
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'referenceKeypad:k1|new_key'
+Slack : -1.403
+TNS   : -58.926
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'a'
+Slack : 0.364
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'store[0]'
+Slack : 0.413
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'a'
+Slack : -4.714
+TNS   : -116.202
+
+Type  : Slow 1200mV 0C Model Setup 'clock_dividertest:cd|clock_out'
+Slack : -4.710
+TNS   : -314.680
+
+Type  : Slow 1200mV 0C Model Setup 'clkfast'
+Slack : -3.664
+TNS   : -29.712
+
+Type  : Slow 1200mV 0C Model Setup 'store[0]'
+Slack : -2.337
+TNS   : -8.334
+
+Type  : Slow 1200mV 0C Model Setup 'referenceKeypad:k1|new_key'
+Slack : -1.522
+TNS   : -10.485
+
+Type  : Slow 1200mV 0C Model Hold 'clock_dividertest:cd|clock_out'
+Slack : 0.094
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'store[0]'
+Slack : 0.271
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clkfast'
+Slack : 0.394
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'referenceKeypad:k1|new_key'
+Slack : 0.408
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'a'
+Slack : 0.944
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clkfast'
+Slack : -3.000
+TNS   : -32.463
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock_dividertest:cd|clock_out'
+Slack : -1.403
+TNS   : -329.705
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'referenceKeypad:k1|new_key'
+Slack : -1.403
+TNS   : -58.926
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'store[0]'
+Slack : 0.409
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'a'
+Slack : 0.422
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'a'
+Slack : -1.892
+TNS   : -41.283
+
+Type  : Fast 1200mV 0C Model Setup 'clock_dividertest:cd|clock_out'
+Slack : -1.696
+TNS   : -67.375
+
+Type  : Fast 1200mV 0C Model Setup 'clkfast'
+Slack : -1.159
+TNS   : -3.498
+
+Type  : Fast 1200mV 0C Model Setup 'store[0]'
+Slack : -0.825
+TNS   : -2.770
+
+Type  : Fast 1200mV 0C Model Setup 'referenceKeypad:k1|new_key'
+Slack : -0.206
+TNS   : -1.371
+
+Type  : Fast 1200mV 0C Model Hold 'clock_dividertest:cd|clock_out'
+Slack : 0.145
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'referenceKeypad:k1|new_key'
+Slack : 0.166
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clkfast'
+Slack : 0.170
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'store[0]'
+Slack : 0.178
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'a'
+Slack : 0.422
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clkfast'
+Slack : -3.000
+TNS   : -24.725
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock_dividertest:cd|clock_out'
+Slack : -1.000
+TNS   : -235.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'referenceKeypad:k1|new_key'
+Slack : -1.000
+TNS   : -42.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'a'
+Slack : 0.374
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'store[0]'
+Slack : 0.411
+TNS   : 0.000
+
+------------------------------------------------------------

@@ -1,6 +1,7 @@
 module fp_adder(clkfast,S1,inp,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR, GPIO_1);             
   input [15:0]inp; /////////////////////////////////////////// input
-  input clkfast,S1;
+  input clkfast;
+  input [1:0] S1;
   output [15:0]sum;
   output reg [1:0] state_led =0;
   output reg over,under;
@@ -54,7 +55,7 @@ referenceKeypad k1(LEDR, GPIO_1, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
   
   always@(posedge clk)
     begin
-      if(S1 && (count==2'd0))
+      if(S1 == 2'b00)
        begin
         // $display("reset at time %d",$time); ///////////// arduino 
          count<=2'b00;
@@ -76,7 +77,7 @@ referenceKeypad k1(LEDR, GPIO_1, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
          count<=count+1; 
 			state_led<=2'b00;
        end
-      else if(S1 && (count==2'b01))
+      else if(S1 == 2'b01)
        begin
          //$display("input1 is %h at time %d",inp,$time); ///////////// arduino display
          
@@ -96,7 +97,7 @@ referenceKeypad k1(LEDR, GPIO_1, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 			state_led<=2'b01;
        end
       
-      else if(S1 && (count==2'b10))
+      else if(S1 == 2'b11)
        begin
          //$display("input2 is %h at time %d",inp,$time); ///////////// arduino display
          sig2<= inp[15];
@@ -114,7 +115,7 @@ referenceKeypad k1(LEDR, GPIO_1, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 			state_led<=2'b10;
        end   
         
-      else if( S1 && count==2'b11)
+      else if(S1 == 2'b10)
          begin    
             // $display("FPA sum at time %d",$time);/////////////////////// arduino display.
              count<=count+1;
