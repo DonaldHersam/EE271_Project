@@ -85,20 +85,7 @@ set_location_assignment PIN_C19 -to HEX3[3]
 set_location_assignment PIN_E21 -to HEX3[2]
 set_location_assignment PIN_E22 -to HEX3[1]
 set_location_assignment PIN_F21 -to HEX3[0]
-set_location_assignment PIN_F20 -to HEX4[6]
-set_location_assignment PIN_F19 -to HEX4[5]
-set_location_assignment PIN_H19 -to HEX4[4]
-set_location_assignment PIN_J18 -to HEX4[3]
-set_location_assignment PIN_E19 -to HEX4[2]
-set_location_assignment PIN_E20 -to HEX4[1]
-set_location_assignment PIN_F18 -to HEX4[0]
-set_location_assignment PIN_N20 -to HEX5[6]
-set_location_assignment PIN_N19 -to HEX5[5]
-set_location_assignment PIN_M20 -to HEX5[4]
-set_location_assignment PIN_N18 -to HEX5[3]
-set_location_assignment PIN_L18 -to HEX5[2]
-set_location_assignment PIN_K20 -to HEX5[1]
-set_location_assignment PIN_J20 -to HEX5[0]
+
 
 
 

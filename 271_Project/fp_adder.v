@@ -475,8 +475,8 @@ assign HEX5 = hex5;
 always@(posedge new_key) begin
 	// Push characters left.
 
-	hex5 <= hex4;
-	hex4 <= hex3;
+//	hex5 <= hex4;
+//	hex4 <= hex3;
 	hex3 <= hex2;
 	hex2 <= hex1;
 	hex1 <= hex0;

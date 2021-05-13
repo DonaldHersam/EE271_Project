@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp_adder
-Wed May 12 22:44:39 2021
+Wed May 12 23:01:55 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -51,15 +51,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 12 22:44:39 2021       ;
+; Analysis & Synthesis Status        ; Successful - Wed May 12 23:01:55 2021       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp_adder                                    ;
 ; Top-level Entity Name              ; fp_adder                                    ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 572                                         ;
+; Total logic elements               ; 558                                         ;
 ;     Total combinational functions  ; 462                                         ;
-;     Dedicated logic registers      ; 298                                         ;
-; Total registers                    ; 298                                         ;
+;     Dedicated logic registers      ; 284                                         ;
+; Total registers                    ; 284                                         ;
 ; Total pins                         ; 105                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -169,8 +169,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -188,7 +187,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+--------------------------------+
 ; Resource                                    ; Usage                          ;
 +---------------------------------------------+--------------------------------+
-; Estimated Total logic elements              ; 572                            ;
+; Estimated Total logic elements              ; 558                            ;
 ;                                             ;                                ;
 ; Total combinational functions               ; 462                            ;
 ; Logic element usage by number of LUT inputs ;                                ;
@@ -200,8 +199,8 @@ https://fpgasoftware.intel.com/eula.
 ;     -- normal mode                          ; 366                            ;
 ;     -- arithmetic mode                      ; 96                             ;
 ;                                             ;                                ;
-; Total registers                             ; 298                            ;
-;     -- Dedicated logic registers            ; 298                            ;
+; Total registers                             ; 284                            ;
+;     -- Dedicated logic registers            ; 284                            ;
 ;     -- I/O registers                        ; 0                              ;
 ;                                             ;                                ;
 ; I/O pins                                    ; 105                            ;
@@ -210,8 +209,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                                ;
 ; Maximum fan-out node                        ; clock_dividertest:cd|clock_out ;
 ; Maximum fan-out                             ; 236                            ;
-; Total fan-out                               ; 2323                           ;
-; Average fan-out                             ; 2.38                           ;
+; Total fan-out                               ; 2281                           ;
+; Average fan-out                             ; 2.37                           ;
 +---------------------------------------------+--------------------------------+
 
 
@@ -220,9 +219,9 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------+-------------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name            ; Entity Name       ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------+-------------------+--------------+
-; |fp_adder                  ; 462 (364)           ; 298 (199)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 105  ; 0            ; 0          ; |fp_adder                      ; fp_adder          ; work         ;
+; |fp_adder                  ; 462 (364)           ; 284 (199)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 105  ; 0            ; 0          ; |fp_adder                      ; fp_adder          ; work         ;
 ;    |clock_dividertest:cd|  ; 35 (35)             ; 21 (21)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |fp_adder|clock_dividertest:cd ; clock_dividertest ; work         ;
-;    |display:d1|            ; 8 (8)               ; 42 (42)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |fp_adder|display:d1           ; display           ; work         ;
+;    |display:d1|            ; 8 (8)               ; 28 (28)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |fp_adder|display:d1           ; display           ; work         ;
 ;    |referenceKeypad:k1|    ; 55 (55)             ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |fp_adder|referenceKeypad:k1   ; referenceKeypad   ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------+-------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -308,7 +307,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 298   ;
+; Total registers                              ; 284   ;
 ; Number of registers using Synchronous Clear  ; 8     ;
 ; Number of registers using Synchronous Load   ; 24    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -344,28 +343,14 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; display:d1|hex2[4]                      ; 2       ;
 ; display:d1|hex2[5]                      ; 2       ;
 ; display:d1|hex2[6]                      ; 2       ;
-; display:d1|hex3[0]                      ; 2       ;
-; display:d1|hex3[1]                      ; 2       ;
-; display:d1|hex3[2]                      ; 2       ;
-; display:d1|hex3[3]                      ; 2       ;
-; display:d1|hex3[4]                      ; 2       ;
-; display:d1|hex3[5]                      ; 2       ;
-; display:d1|hex3[6]                      ; 2       ;
-; display:d1|hex4[0]                      ; 2       ;
-; display:d1|hex4[1]                      ; 2       ;
-; display:d1|hex4[2]                      ; 2       ;
-; display:d1|hex4[3]                      ; 2       ;
-; display:d1|hex4[4]                      ; 2       ;
-; display:d1|hex4[5]                      ; 2       ;
-; display:d1|hex4[6]                      ; 2       ;
-; display:d1|hex5[0]                      ; 1       ;
-; display:d1|hex5[1]                      ; 1       ;
-; display:d1|hex5[2]                      ; 1       ;
-; display:d1|hex5[3]                      ; 1       ;
-; display:d1|hex5[4]                      ; 1       ;
-; display:d1|hex5[5]                      ; 1       ;
-; display:d1|hex5[6]                      ; 1       ;
-; Total number of inverted registers = 42 ;         ;
+; display:d1|hex3[0]                      ; 1       ;
+; display:d1|hex3[1]                      ; 1       ;
+; display:d1|hex3[2]                      ; 1       ;
+; display:d1|hex3[3]                      ; 1       ;
+; display:d1|hex3[4]                      ; 1       ;
+; display:d1|hex3[5]                      ; 1       ;
+; display:d1|hex3[6]                      ; 1       ;
+; Total number of inverted registers = 28 ;         ;
 +-----------------------------------------+---------+
 
 
@@ -420,25 +405,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 105                         ;
-; cycloneiii_ff         ; 298                         ;
+; cycloneiii_ff         ; 284                         ;
 ;     ENA               ; 61                          ;
 ;     ENA SCLR          ; 8                           ;
 ;     SLD               ; 24                          ;
-;     plain             ; 205                         ;
+;     plain             ; 191                         ;
 ; cycloneiii_io_obuf    ; 8                           ;
-; cycloneiii_lcell_comb ; 505                         ;
+; cycloneiii_lcell_comb ; 491                         ;
 ;     arith             ; 96                          ;
 ;         2 data inputs ; 43                          ;
 ;         3 data inputs ; 53                          ;
-;     normal            ; 409                         ;
+;     normal            ; 395                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 67                          ;
+;         1 data inputs ; 53                          ;
 ;         2 data inputs ; 41                          ;
 ;         3 data inputs ; 139                         ;
 ;         4 data inputs ; 160                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.01                        ;
+; Average LUT depth     ; 3.07                        ;
 +-----------------------+-----------------------------+
 
 
@@ -457,7 +442,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed May 12 22:44:29 2021
+    Info: Processing started: Wed May 12 23:01:45 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp_adder -c fp_adder
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -597,18 +582,32 @@ Warning (13012): Latch frac_2[0] has unsafe behavior File: C:/Users/hersa/Deskto
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "over" is stuck at GND File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 7
     Warning (13410): Pin "under" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 7
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 12
+    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 12
+    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 12
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 12
+    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 12
+    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 12
+    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 12
+    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 13
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 13
+    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 13
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 13
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 13
+    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 13
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 13
 Info (286030): Timing-Driven Synthesis is running
 Info (144001): Generated suppressed messages file C:/Users/hersa/Desktop/EE271_Project/271_Project/output_files/fp_adder.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 694 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 680 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 78 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 589 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 89 warnings
-    Info: Peak virtual memory: 4761 megabytes
-    Info: Processing ended: Wed May 12 22:44:39 2021
+    Info (21061): Implemented 575 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 103 warnings
+    Info: Peak virtual memory: 4763 megabytes
+    Info: Processing ended: Wed May 12 23:01:55 2021
     Info: Elapsed time: 00:00:10
     Info: Total CPU time (on all processors): 00:00:24
 
