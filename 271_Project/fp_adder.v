@@ -50,6 +50,7 @@ module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX
   wire [3:0] binary_char;
   
   reg z,z_1;
+  reg start_input = 0;
  
  reg pushout,pushout_1,pushout_2,pushout_3,pushout_4,pushout_5,pushout_6,pushout_7;
  reg pushout_8,pushout_9,pushout_10,pushout_11;
@@ -94,6 +95,8 @@ display_vector dv1(display_word,	new_key, screen_clear,
          pushout_9<=0;pushout_10<=0;pushout_11<=0;
          sum1<=0;
          add2<=0;
+			
+			inp <= 15'b0;
 			//x<=0;
          
          count<=count+1; 
@@ -103,8 +106,15 @@ display_vector dv1(display_word,	new_key, screen_clear,
        begin
          //$display("input1 is %h at time %d",inp,$time); ///////////// arduino display
          screen_clear<=1;
-			inp <= {inp[11:0], binary_char[3:0]};
-			#5
+			
+			if(start_input==0) begin
+				inp <= 15'b0;
+			end
+			if (new_key) begin
+				start_input<=1;
+				inp <= {inp[11:0], binary_char[3:0]};
+			end
+			
 			display_word <= inp;
 			sig1<= inp[15];
          exp1<= inp[14:10];
@@ -125,7 +135,17 @@ display_vector dv1(display_word,	new_key, screen_clear,
        begin
          //$display("input2 is %h at time %d",inp,$time); ///////////// arduino display
          screen_clear<=1;
-			inp <= {inp[11:0], binary_char[3:0]};
+			if(start_input==1) begin
+				inp <= 15'b0;
+			end
+			
+			
+			if (new_key) begin
+				start_input<=0;
+				inp <= {inp[11:0], binary_char[3:0]};
+			end
+			display_word <= inp;
+			
 			sig2<= inp[15];
          exp2<= inp[14:10];
          frac2[11:0]<={inp[9:0],2'b00};
@@ -144,7 +164,8 @@ display_vector dv1(display_word,	new_key, screen_clear,
       else if(S1 == 2'b10)
          begin    
             // $display("FPA sum at time %d",$time);/////////////////////// arduino display.
-             screen_clear<=1;
+             display_word <= sum;
+				 screen_clear<=1;
 				 count<=count+1;
              a<=1;
             pushout_3<=pushout_2;
@@ -579,6 +600,11 @@ endmodule
 
 
 
+
+
+
+
+
 module display_vector(
 	display_word,
 	new_key,
@@ -625,7 +651,7 @@ assign HEX5 = hex5;
  * This block is run when "new_key" flag is set (<=> new key was just pressed).
  */
 
-always@(posedge new_key) begin
+always@(*) begin
 
 if (screen_clear==1) begin
 	// Push characters left.
@@ -637,72 +663,72 @@ if (screen_clear==1) begin
 
 	// Show a new character.
 	case (display_word[3:0]) 
-		 2'b0001 : hex0 <= ~7'b0000110; // 1
-		 2'b0010 : hex0 <= ~7'b1011011; // 2
-		 2'b0011 : hex0 <= ~7'b1001111; // 3
-		 2'b1010 : hex0 <= ~7'b1110111; // A
-		 2'b0100 : hex0 <= ~7'b1100110; // 4
-		 2'b0101 : hex0 <= ~7'b1101101; // 5
-		 2'b0110 : hex0 <= ~7'b1111101; // 6
-		 2'b1011 : hex0 <= ~7'b1111100; // b
-		 2'b0111 : hex0 <= ~7'b0000111; // 7
-		 2'b1000 : hex0 <= ~7'b1111111; // 8
-		 2'b1001 : hex0 <= ~7'b1101111; // 9
-		 2'b1100 : hex0 <= ~7'b0111001; // C
-		 2'b0000 : hex0 <= ~7'b0111111; // 0
-		 2'b1101 : hex0 <= ~7'b1011110; // d
+		 4'b0001 : hex0 <= ~7'b0000110; // 1
+		 4'b0010 : hex0 <= ~7'b1011011; // 2
+		 4'b0011 : hex0 <= ~7'b1001111; // 3
+		 4'b1010 : hex0 <= ~7'b1110111; // A
+		 4'b0100 : hex0 <= ~7'b1100110; // 4
+		 4'b0101 : hex0 <= ~7'b1101101; // 5
+		 4'b0110 : hex0 <= ~7'b1111101; // 6
+		 4'b1011 : hex0 <= ~7'b1111100; // b
+		 4'b0111 : hex0 <= ~7'b0000111; // 7
+		 4'b1000 : hex0 <= ~7'b1111111; // 8
+		 4'b1001 : hex0 <= ~7'b1101111; // 9
+		 4'b1100 : hex0 <= ~7'b0111001; // C
+		 4'b0000 : hex0 <= ~7'b0111111; // 0
+		 4'b1101 : hex0 <= ~7'b1011110; // d
 	endcase
 	
 	case (display_word[7:4]) 
-		 2'b0001 : hex1 <= ~7'b0000110; // 1
-		 2'b0010 : hex1 <= ~7'b1011011; // 2
-		 2'b0011 : hex1 <= ~7'b1001111; // 3
-		 2'b1010 : hex1 <= ~7'b1110111; // A
-		 2'b0100 : hex1 <= ~7'b1100110; // 4
-		 2'b0101 : hex1 <= ~7'b1101101; // 5
-		 2'b0110 : hex1 <= ~7'b1111101; // 6
-		 2'b1011 : hex1 <= ~7'b1111100; // b
-		 2'b0111 : hex1 <= ~7'b0000111; // 7
-		 2'b1000 : hex1 <= ~7'b1111111; // 8
-		 2'b1001 : hex1 <= ~7'b1101111; // 9
-		 2'b1100 : hex1 <= ~7'b0111001; // C
-		 2'b0000 : hex1 <= ~7'b0111111; // 0
-		 2'b1101 : hex1 <= ~7'b1011110; // d
+		 4'b0001 : hex1 <= ~7'b0000110; // 1
+		 4'b0010 : hex1 <= ~7'b1011011; // 2
+		 4'b0011 : hex1 <= ~7'b1001111; // 3
+		 4'b1010 : hex1 <= ~7'b1110111; // A
+		 4'b0100 : hex1 <= ~7'b1100110; // 4
+		 4'b0101 : hex1 <= ~7'b1101101; // 5
+		 4'b0110 : hex1 <= ~7'b1111101; // 6
+		 4'b1011 : hex1 <= ~7'b1111100; // b
+		 4'b0111 : hex1 <= ~7'b0000111; // 7
+		 4'b1000 : hex1 <= ~7'b1111111; // 8
+		 4'b1001 : hex1 <= ~7'b1101111; // 9
+		 4'b1100 : hex1 <= ~7'b0111001; // C
+		 4'b0000 : hex1 <= ~7'b0111111; // 0
+		 4'b1101 : hex1 <= ~7'b1011110; // d
 	endcase
 	
 	case (display_word[11:8]) 
-		 2'b0001 : hex2 <= ~7'b0000110; // 1
-		 2'b0010 : hex2 <= ~7'b1011011; // 2
-		 2'b0011 : hex2 <= ~7'b1001111; // 3
-		 2'b1010 : hex2 <= ~7'b1110111; // A
-		 2'b0100 : hex2 <= ~7'b1100110; // 4
-		 2'b0101 : hex2 <= ~7'b1101101; // 5
-		 2'b0110 : hex2 <= ~7'b1111101; // 6
-		 2'b1011 : hex2 <= ~7'b1111100; // b
-		 2'b0111 : hex2 <= ~7'b0000111; // 7
-		 2'b1000 : hex2 <= ~7'b1111111; // 8
-		 2'b1001 : hex2 <= ~7'b1101111; // 9
-		 2'b1100 : hex2 <= ~7'b0111001; // C
-		 2'b0000 : hex2 <= ~7'b0111111; // 0
-		 2'b1101 : hex2 <= ~7'b1011110; // d
+		 4'b0001 : hex2 <= ~7'b0000110; // 1
+		 4'b0010 : hex2 <= ~7'b1011011; // 2
+		 4'b0011 : hex2 <= ~7'b1001111; // 3
+		 4'b1010 : hex2 <= ~7'b1110111; // A
+		 4'b0100 : hex2 <= ~7'b1100110; // 4
+		 4'b0101 : hex2 <= ~7'b1101101; // 5
+		 4'b0110 : hex2 <= ~7'b1111101; // 6
+		 4'b1011 : hex2 <= ~7'b1111100; // b
+		 4'b0111 : hex2 <= ~7'b0000111; // 7
+		 4'b1000 : hex2 <= ~7'b1111111; // 8
+		 4'b1001 : hex2 <= ~7'b1101111; // 9
+		 4'b1100 : hex2 <= ~7'b0111001; // C
+		 4'b0000 : hex2 <= ~7'b0111111; // 0
+		 4'b1101 : hex2 <= ~7'b1011110; // d
 	endcase
 	
 	
 	case (display_word[15:12]) 
-		 2'b0001 : hex3 <= ~7'b0000110; // 1
-		 2'b0010 : hex3 <= ~7'b1011011; // 2
-		 2'b0011 : hex3 <= ~7'b1001111; // 3
-		 2'b1010 : hex3 <= ~7'b1110111; // A
-		 2'b0100 : hex3 <= ~7'b1100110; // 4
-		 2'b0101 : hex3 <= ~7'b1101101; // 5
-		 2'b0110 : hex3 <= ~7'b1111101; // 6
-		 2'b1011 : hex3 <= ~7'b1111100; // b
-		 2'b0111 : hex3 <= ~7'b0000111; // 7
-		 2'b1000 : hex3 <= ~7'b1111111; // 8
-		 2'b1001 : hex3 <= ~7'b1101111; // 9
-		 2'b1100 : hex3 <= ~7'b0111001; // C
-		 2'b0000 : hex3 <= ~7'b0111111; // 0
-		 2'b1101 : hex3 <= ~7'b1011110; // d
+		 4'b0001 : hex3 <= ~7'b0000110; // 1
+		 4'b0010 : hex3 <= ~7'b1011011; // 2
+		 4'b0011 : hex3 <= ~7'b1001111; // 3
+		 4'b1010 : hex3 <= ~7'b1110111; // A
+		 4'b0100 : hex3 <= ~7'b1100110; // 4
+		 4'b0101 : hex3 <= ~7'b1101101; // 5
+		 4'b0110 : hex3 <= ~7'b1111101; // 6
+		 4'b1011 : hex3 <= ~7'b1111100; // b
+		 4'b0111 : hex3 <= ~7'b0000111; // 7
+		 4'b1000 : hex3 <= ~7'b1111111; // 8
+		 4'b1001 : hex3 <= ~7'b1101111; // 9
+		 4'b1100 : hex3 <= ~7'b0111001; // C
+		 4'b0000 : hex3 <= ~7'b0111111; // 0
+		 4'b1101 : hex3 <= ~7'b1011110; // d
 	endcase
 end
 

@@ -3,43 +3,107 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'a'
-Slack : -5.889
-TNS   : -170.478
+Slack : -6.600
+TNS   : -191.042
 
 Type  : Slow 1200mV 85C Model Setup 'clock_dividertest:cd|clock_out'
-Slack : -5.334
-TNS   : -407.768
+Slack : -4.768
+TNS   : -474.034
 
 Type  : Slow 1200mV 85C Model Setup 'clkfast'
-Slack : -3.797
-TNS   : -34.541
+Slack : -3.658
+TNS   : -35.767
+
+Type  : Slow 1200mV 85C Model Setup 'display_word[1]'
+Slack : -3.240
+TNS   : -19.836
+
+Type  : Slow 1200mV 85C Model Setup 'display_word[13]'
+Slack : -2.997
+TNS   : -19.628
+
+Type  : Slow 1200mV 85C Model Setup 'display_word[10]'
+Slack : -2.935
+TNS   : -18.269
+
+Type  : Slow 1200mV 85C Model Setup 'display_word[5]'
+Slack : -2.836
+TNS   : -19.312
 
 Type  : Slow 1200mV 85C Model Setup 'store[0]'
-Slack : -2.480
-TNS   : -9.374
+Slack : -2.644
+TNS   : -9.957
 
 Type  : Slow 1200mV 85C Model Setup 'referenceKeypad:k1|new_key'
-Slack : -1.104
-TNS   : -18.700
+Slack : -1.155
+TNS   : -4.620
 
 Type  : Slow 1200mV 85C Model Hold 'clock_dividertest:cd|clock_out'
-Slack : 0.254
+Slack : -0.466
+TNS   : -2.576
+
+Type  : Slow 1200mV 85C Model Hold 'store[0]'
+Slack : 0.383
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clkfast'
-Slack : 0.426
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'store[0]'
-Slack : 0.463
+Slack : 0.645
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'referenceKeypad:k1|new_key'
-Slack : 0.596
+Slack : 0.678
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'display_word[10]'
+Slack : 1.132
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'display_word[13]'
+Slack : 1.259
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'display_word[5]'
+Slack : 1.305
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'display_word[1]'
+Slack : 1.626
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'a'
-Slack : 1.801
+Slack : 2.265
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'display_word[1]'
+Slack : -1.501
+TNS   : -7.896
+
+Type  : Slow 1200mV 85C Model Recovery 'display_word[10]'
+Slack : -1.405
+TNS   : -6.460
+
+Type  : Slow 1200mV 85C Model Recovery 'display_word[5]'
+Slack : -1.300
+TNS   : -7.015
+
+Type  : Slow 1200mV 85C Model Recovery 'display_word[13]'
+Slack : -1.207
+TNS   : -7.105
+
+Type  : Slow 1200mV 85C Model Removal 'display_word[13]'
+Slack : 0.265
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'display_word[10]'
+Slack : 0.432
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'display_word[5]'
+Slack : 0.559
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'display_word[1]'
+Slack : 0.698
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clkfast'
@@ -48,58 +112,138 @@ TNS   : -32.463
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock_dividertest:cd|clock_out'
 Slack : -1.403
-TNS   : -371.795
+TNS   : -394.243
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'referenceKeypad:k1|new_key'
 Slack : -1.403
-TNS   : -39.284
+TNS   : -5.612
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'display_word[5]'
+Slack : 0.389
+TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'store[0]'
-Slack : 0.390
+Slack : 0.410
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'display_word[13]'
+Slack : 0.425
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'display_word[1]'
+Slack : 0.426
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'a'
-Slack : 0.429
+Slack : 0.438
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'display_word[10]'
+Slack : 0.464
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'a'
-Slack : -5.425
-TNS   : -156.889
+Slack : -6.021
+TNS   : -175.871
 
 Type  : Slow 1200mV 0C Model Setup 'clock_dividertest:cd|clock_out'
-Slack : -4.890
-TNS   : -356.220
+Slack : -4.332
+TNS   : -415.441
 
 Type  : Slow 1200mV 0C Model Setup 'clkfast'
-Slack : -3.443
-TNS   : -29.509
+Slack : -3.364
+TNS   : -30.838
+
+Type  : Slow 1200mV 0C Model Setup 'display_word[1]'
+Slack : -2.883
+TNS   : -17.476
+
+Type  : Slow 1200mV 0C Model Setup 'display_word[13]'
+Slack : -2.668
+TNS   : -17.388
+
+Type  : Slow 1200mV 0C Model Setup 'display_word[10]'
+Slack : -2.559
+TNS   : -15.792
+
+Type  : Slow 1200mV 0C Model Setup 'display_word[5]'
+Slack : -2.519
+TNS   : -16.999
 
 Type  : Slow 1200mV 0C Model Setup 'store[0]'
-Slack : -2.328
-TNS   : -8.624
+Slack : -2.427
+TNS   : -9.087
 
 Type  : Slow 1200mV 0C Model Setup 'referenceKeypad:k1|new_key'
-Slack : -0.923
-TNS   : -14.641
+Slack : -0.975
+TNS   : -3.900
 
 Type  : Slow 1200mV 0C Model Hold 'clock_dividertest:cd|clock_out'
-Slack : 0.229
+Slack : -0.429
+TNS   : -2.390
+
+Type  : Slow 1200mV 0C Model Hold 'store[0]'
+Slack : 0.393
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clkfast'
-Slack : 0.394
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'store[0]'
-Slack : 0.444
+Slack : 0.596
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'referenceKeypad:k1|new_key'
-Slack : 0.485
+Slack : 0.627
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'display_word[10]'
+Slack : 0.923
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'display_word[5]'
+Slack : 1.110
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'display_word[13]'
+Slack : 1.148
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'display_word[1]'
+Slack : 1.488
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'a'
-Slack : 1.746
+Slack : 2.165
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'display_word[1]'
+Slack : -1.328
+TNS   : -6.701
+
+Type  : Slow 1200mV 0C Model Recovery 'display_word[10]'
+Slack : -1.205
+TNS   : -5.225
+
+Type  : Slow 1200mV 0C Model Recovery 'display_word[5]'
+Slack : -1.089
+TNS   : -5.658
+
+Type  : Slow 1200mV 0C Model Recovery 'display_word[13]'
+Slack : -0.961
+TNS   : -5.583
+
+Type  : Slow 1200mV 0C Model Removal 'display_word[13]'
+Slack : 0.219
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'display_word[10]'
+Slack : 0.311
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'display_word[5]'
+Slack : 0.469
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'display_word[1]'
+Slack : 0.616
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clkfast'
@@ -108,78 +252,174 @@ TNS   : -32.463
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock_dividertest:cd|clock_out'
 Slack : -1.403
-TNS   : -371.795
+TNS   : -394.243
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'referenceKeypad:k1|new_key'
 Slack : -1.403
-TNS   : -39.284
+TNS   : -5.612
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'display_word[10]'
+Slack : 0.353
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'store[0]'
-Slack : 0.365
+Slack : 0.415
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'display_word[13]'
+Slack : 0.416
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'display_word[1]'
+Slack : 0.435
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'display_word[5]'
+Slack : 0.454
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'a'
-Slack : 0.469
+Slack : 0.465
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'a'
-Slack : -2.132
-TNS   : -60.185
+Slack : -2.412
+TNS   : -70.493
 
 Type  : Fast 1200mV 0C Model Setup 'clock_dividertest:cd|clock_out'
-Slack : -1.598
-TNS   : -76.340
+Slack : -1.402
+TNS   : -88.380
+
+Type  : Fast 1200mV 0C Model Setup 'display_word[1]'
+Slack : -1.336
+TNS   : -7.880
+
+Type  : Fast 1200mV 0C Model Setup 'display_word[10]'
+Slack : -1.306
+TNS   : -7.918
+
+Type  : Fast 1200mV 0C Model Setup 'display_word[5]'
+Slack : -1.201
+TNS   : -8.113
+
+Type  : Fast 1200mV 0C Model Setup 'display_word[13]'
+Slack : -1.191
+TNS   : -7.594
 
 Type  : Fast 1200mV 0C Model Setup 'clkfast'
-Slack : -1.097
-TNS   : -3.431
+Slack : -1.104
+TNS   : -3.990
 
 Type  : Fast 1200mV 0C Model Setup 'store[0]'
-Slack : -0.737
-TNS   : -2.745
+Slack : -0.868
+TNS   : -3.111
 
 Type  : Fast 1200mV 0C Model Setup 'referenceKeypad:k1|new_key'
-Slack : 0.111
+Slack : 0.051
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clock_dividertest:cd|clock_out'
-Slack : 0.148
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Hold 'clkfast'
-Slack : 0.170
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Hold 'referenceKeypad:k1|new_key'
-Slack : 0.211
+Slack : 0.059
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'store[0]'
-Slack : 0.285
+Slack : 0.209
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clkfast'
+Slack : 0.250
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'referenceKeypad:k1|new_key'
+Slack : 0.262
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'display_word[13]'
+Slack : 0.401
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'display_word[10]'
+Slack : 0.415
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'display_word[5]'
+Slack : 0.441
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'display_word[1]'
+Slack : 0.508
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'a'
-Slack : 0.926
+Slack : 1.186
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'display_word[10]'
+Slack : -0.227
+TNS   : -0.227
+
+Type  : Fast 1200mV 0C Model Recovery 'display_word[1]'
+Slack : -0.178
+TNS   : -0.271
+
+Type  : Fast 1200mV 0C Model Recovery 'display_word[5]'
+Slack : -0.130
+TNS   : -0.130
+
+Type  : Fast 1200mV 0C Model Recovery 'display_word[13]'
+Slack : -0.025
+TNS   : -0.067
+
+Type  : Fast 1200mV 0C Model Removal 'display_word[13]'
+Slack : 0.131
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'display_word[10]'
+Slack : 0.237
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'display_word[5]'
+Slack : 0.271
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'display_word[1]'
+Slack : 0.293
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clkfast'
 Slack : -3.000
-TNS   : -24.713
+TNS   : -24.725
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock_dividertest:cd|clock_out'
 Slack : -1.000
-TNS   : -265.000
+TNS   : -281.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'referenceKeypad:k1|new_key'
 Slack : -1.000
-TNS   : -28.000
+TNS   : -4.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'display_word[10]'
+Slack : 0.285
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'display_word[5]'
+Slack : 0.290
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'display_word[1]'
+Slack : 0.328
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'display_word[13]'
+Slack : 0.336
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'a'
-Slack : 0.395
+Slack : 0.410
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'store[0]'
-Slack : 0.439
+Slack : 0.421
 TNS   : 0.000
 
 ------------------------------------------------------------
