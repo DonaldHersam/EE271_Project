@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fp_adder
-Wed May 12 23:32:26 2021
+Thu May 13 09:16:11 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -50,15 +50,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 12 23:32:26 2021       ;
+; Analysis & Synthesis Status        ; Successful - Thu May 13 09:16:11 2021       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp_adder                                    ;
 ; Top-level Entity Name              ; fp_adder                                    ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 582                                         ;
-;     Total combinational functions  ; 469                                         ;
-;     Dedicated logic registers      ; 305                                         ;
-; Total registers                    ; 305                                         ;
+; Total logic elements               ; 611                                         ;
+;     Total combinational functions  ; 490                                         ;
+;     Dedicated logic registers      ; 317                                         ;
+; Total registers                    ; 317                                         ;
 ; Total pins                         ; 89                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -168,7 +168,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -186,20 +187,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+--------------------------------+
 ; Resource                                    ; Usage                          ;
 +---------------------------------------------+--------------------------------+
-; Estimated Total logic elements              ; 582                            ;
+; Estimated Total logic elements              ; 611                            ;
 ;                                             ;                                ;
-; Total combinational functions               ; 469                            ;
+; Total combinational functions               ; 490                            ;
 ; Logic element usage by number of LUT inputs ;                                ;
-;     -- 4 input functions                    ; 166                            ;
-;     -- 3 input functions                    ; 193                            ;
-;     -- <=2 input functions                  ; 110                            ;
+;     -- 4 input functions                    ; 170                            ;
+;     -- 3 input functions                    ; 221                            ;
+;     -- <=2 input functions                  ; 99                             ;
 ;                                             ;                                ;
 ; Logic elements by mode                      ;                                ;
-;     -- normal mode                          ; 373                            ;
-;     -- arithmetic mode                      ; 96                             ;
+;     -- normal mode                          ; 384                            ;
+;     -- arithmetic mode                      ; 106                            ;
 ;                                             ;                                ;
-; Total registers                             ; 305                            ;
-;     -- Dedicated logic registers            ; 305                            ;
+; Total registers                             ; 317                            ;
+;     -- Dedicated logic registers            ; 317                            ;
 ;     -- I/O registers                        ; 0                              ;
 ;                                             ;                                ;
 ; I/O pins                                    ; 89                             ;
@@ -207,9 +208,9 @@ https://fpgasoftware.intel.com/eula.
 ; Embedded Multiplier 9-bit elements          ; 0                              ;
 ;                                             ;                                ;
 ; Maximum fan-out node                        ; clock_dividertest:cd|clock_out ;
-; Maximum fan-out                             ; 253                            ;
-; Total fan-out                               ; 2378                           ;
-; Average fan-out                             ; 2.48                           ;
+; Maximum fan-out                             ; 265                            ;
+; Total fan-out                               ; 2472                           ;
+; Average fan-out                             ; 2.49                           ;
 +---------------------------------------------+--------------------------------+
 
 
@@ -218,7 +219,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------+-------------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name            ; Entity Name       ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------+-------------------+--------------+
-; |fp_adder                  ; 469 (366)           ; 305 (216)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 89   ; 0            ; 0          ; |fp_adder                      ; fp_adder          ; work         ;
+; |fp_adder                  ; 490 (387)           ; 317 (228)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 89   ; 0            ; 0          ; |fp_adder                      ; fp_adder          ; work         ;
 ;    |char_to_binary:cb1|    ; 4 (4)               ; 4 (4)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |fp_adder|char_to_binary:cb1   ; char_to_binary    ; work         ;
 ;    |clock_dividertest:cd|  ; 35 (35)             ; 21 (21)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |fp_adder|clock_dividertest:cd ; clock_dividertest ; work         ;
 ;    |display:d1|            ; 9 (9)               ; 28 (28)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |fp_adder|display:d1           ; display           ; work         ;
@@ -248,38 +249,39 @@ Encoding Type:  One-Hot
 ; n_1[1]                                              ; Equal6              ; yes                    ;
 ; n_1[2]                                              ; Equal6              ; yes                    ;
 ; n_1[3]                                              ; Equal6              ; yes                    ;
-; frac_1[12]                                          ; frac_1[12]          ; yes                    ;
-; frac_1[11]                                          ; frac_1[12]          ; yes                    ;
-; frac_1[10]                                          ; frac_1[12]          ; yes                    ;
-; frac_1[9]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[8]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[7]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[6]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[5]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[4]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[3]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[2]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[1]                                           ; frac_1[12]          ; yes                    ;
-; frac_1[0]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[12]                                          ; frac_1[12]          ; yes                    ;
-; frac_2[11]                                          ; frac_1[12]          ; yes                    ;
-; frac_2[10]                                          ; frac_1[12]          ; yes                    ;
-; frac_2[9]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[8]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[7]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[6]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[5]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[4]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[3]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[2]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[1]                                           ; frac_1[12]          ; yes                    ;
-; frac_2[0]                                           ; frac_1[12]          ; yes                    ;
+; frac_1[12]                                          ; a                   ; yes                    ;
+; frac_1[11]                                          ; a                   ; yes                    ;
+; frac_1[10]                                          ; a                   ; yes                    ;
+; frac_1[9]                                           ; a                   ; yes                    ;
+; frac_1[8]                                           ; a                   ; yes                    ;
+; frac_1[7]                                           ; a                   ; yes                    ;
+; frac_1[6]                                           ; a                   ; yes                    ;
+; frac_1[5]                                           ; a                   ; yes                    ;
+; frac_1[4]                                           ; a                   ; yes                    ;
+; frac_1[3]                                           ; a                   ; yes                    ;
+; frac_1[2]                                           ; a                   ; yes                    ;
+; frac_1[1]                                           ; a                   ; yes                    ;
+; frac_1[0]                                           ; a                   ; yes                    ;
+; frac_2[12]                                          ; a                   ; yes                    ;
+; frac_2[11]                                          ; a                   ; yes                    ;
+; frac_2[10]                                          ; a                   ; yes                    ;
+; frac_2[9]                                           ; a                   ; yes                    ;
+; frac_2[8]                                           ; a                   ; yes                    ;
+; frac_2[7]                                           ; a                   ; yes                    ;
+; frac_2[6]                                           ; a                   ; yes                    ;
+; frac_2[5]                                           ; a                   ; yes                    ;
+; frac_2[4]                                           ; a                   ; yes                    ;
+; frac_2[3]                                           ; a                   ; yes                    ;
+; frac_2[2]                                           ; a                   ; yes                    ;
+; frac_2[1]                                           ; a                   ; yes                    ;
+; frac_2[0]                                           ; a                   ; yes                    ;
 ; exp[0]                                              ; a                   ; yes                    ;
 ; exp[1]                                              ; a                   ; yes                    ;
 ; exp[2]                                              ; a                   ; yes                    ;
 ; exp[3]                                              ; a                   ; yes                    ;
 ; exp[4]                                              ; a                   ; yes                    ;
-; Number of user-specified and inferred latches = 35  ;                     ;                        ;
+; sign                                                ; a                   ; yes                    ;
+; Number of user-specified and inferred latches = 36  ;                     ;                        ;
 +-----------------------------------------------------+---------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
@@ -289,7 +291,6 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------+----------------------------------------+
 ; Register name                          ; Reason for Removal                     ;
 +----------------------------------------+----------------------------------------+
-; store2[12]                             ; Stuck at GND due to stuck port data_in ;
 ; pushout                                ; Stuck at VCC due to stuck port data_in ;
 ; n[4]                                   ; Stuck at GND due to stuck port data_in ;
 ; referenceKeypad:k1|GOUT[0..3]          ; Stuck at GND due to stuck port data_in ;
@@ -298,7 +299,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; num1[14]                               ; Merged with num1[13]                   ;
 ; num2[14]                               ; Merged with num2[13]                   ;
 ; over~reg0                              ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 14 ;                                        ;
+; Total Number of Removed Registers = 13 ;                                        ;
 +----------------------------------------+----------------------------------------+
 
 
@@ -307,9 +308,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 305   ;
+; Total registers                              ; 317   ;
 ; Number of registers using Synchronous Clear  ; 8     ;
-; Number of registers using Synchronous Load   ; 25    ;
+; Number of registers using Synchronous Load   ; 21    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 111   ;
@@ -359,16 +360,18 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |fp_adder|store3[2]                          ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |fp_adder|store3[7]                          ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|store2[10]                         ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|state_led[0]~reg0                  ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|sig2                               ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |fp_adder|store3[4]                          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |fp_adder|store2[11]                         ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |fp_adder|store2[6]                          ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |fp_adder|store3[5]                          ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |fp_adder|store2[2]                          ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|state_led[1]~reg0                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|pushout_2                          ;
 ; 16:1               ; 4 bits    ; 40 LEs        ; 36 LEs               ; 4 LEs                  ; Yes        ; |fp_adder|char_to_binary:cb1|binary_char[3]  ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|referenceKeypad:k1|new_key_char[0] ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|store3[9]                          ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|store3[10]                         ;
-; 16:1               ; 7 bits    ; 70 LEs        ; 63 LEs               ; 7 LEs                  ; Yes        ; |fp_adder|display:d1|hex0[6]                 ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|referenceKeypad:k1|new_key_char[1] ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |fp_adder|store3[12]                         ;
+; 16:1               ; 7 bits    ; 70 LEs        ; 63 LEs               ; 7 LEs                  ; Yes        ; |fp_adder|display:d1|hex0[1]                 ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |fp_adder|sum                                ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |fp_adder|referenceKeypad:k1|Mux1            ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |fp_adder|frac_1                             ;
 ; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |fp_adder|frac_2                             ;
@@ -397,26 +400,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 89                          ;
-; cycloneiii_ff         ; 305                         ;
+; cycloneiii_ff         ; 317                         ;
 ;     ENA               ; 102                         ;
 ;     ENA SCLR          ; 8                           ;
 ;     ENA SLD           ; 1                           ;
-;     SLD               ; 24                          ;
-;     plain             ; 170                         ;
+;     SLD               ; 20                          ;
+;     plain             ; 186                         ;
 ; cycloneiii_io_obuf    ; 8                           ;
-; cycloneiii_lcell_comb ; 498                         ;
-;     arith             ; 96                          ;
+; cycloneiii_lcell_comb ; 519                         ;
+;     arith             ; 106                         ;
 ;         2 data inputs ; 43                          ;
-;         3 data inputs ; 53                          ;
-;     normal            ; 402                         ;
+;         3 data inputs ; 63                          ;
+;     normal            ; 413                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 53                          ;
-;         2 data inputs ; 41                          ;
-;         3 data inputs ; 140                         ;
-;         4 data inputs ; 166                         ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 158                         ;
+;         4 data inputs ; 170                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.04                        ;
+; Average LUT depth     ; 3.06                        ;
 +-----------------------+-----------------------------+
 
 
@@ -435,143 +438,92 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Wed May 12 23:32:16 2021
+    Info: Processing started: Thu May 13 09:16:01 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off fp_adder -c fp_adder
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 5 design units, including 5 entities, in source file fp_adder.v
     Info (12023): Found entity 1: fp_adder File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 1
-    Info (12023): Found entity 2: referenceKeypad File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 314
-    Info (12023): Found entity 3: char_to_binary File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 410
-    Info (12023): Found entity 4: display File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 436
-    Info (12023): Found entity 5: clock_dividertest File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 523
-Warning (10236): Verilog HDL Implicit Net warning at fp_adder.v(58): created implicit net for "clk" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 58
+    Info (12023): Found entity 2: referenceKeypad File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 353
+    Info (12023): Found entity 3: char_to_binary File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 449
+    Info (12023): Found entity 4: display File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 475
+    Info (12023): Found entity 5: clock_dividertest File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 562
+Warning (10236): Verilog HDL Implicit Net warning at fp_adder.v(60): created implicit net for "clk" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
 Info (12127): Elaborating entity "fp_adder" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at fp_adder.v(17): object "f_under" assigned a value but never read File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 17
-Warning (10036): Verilog HDL or VHDL warning at fp_adder.v(32): object "sum1" assigned a value but never read File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 32
-Warning (10036): Verilog HDL or VHDL warning at fp_adder.v(43): object "sign" assigned a value but never read File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 43
-Warning (10036): Verilog HDL or VHDL warning at fp_adder.v(51): object "pushout_11" assigned a value but never read File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 51
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(86): truncated value with size 32 to match size of target (2) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 86
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(97): truncated value with size 32 to match size of target (2) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 97
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(117): truncated value with size 32 to match size of target (2) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 117
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(133): truncated value with size 32 to match size of target (2) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 133
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(216): truncated value with size 32 to match size of target (15) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 216
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(217): truncated value with size 32 to match size of target (15) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 217
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(225): truncated value with size 32 to match size of target (15) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 225
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(240): truncated value with size 32 to match size of target (5) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 240
-Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(194): inferring latch(es) for variable "exp", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(194): inferring latch(es) for variable "frac_1", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(194): inferring latch(es) for variable "frac_2", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(194): inferring latch(es) for variable "under", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(194): inferring latch(es) for variable "n_1", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "n_1[0]" at fp_adder.v(251) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-Info (10041): Inferred latch for "n_1[1]" at fp_adder.v(251) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-Info (10041): Inferred latch for "n_1[2]" at fp_adder.v(251) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-Info (10041): Inferred latch for "n_1[3]" at fp_adder.v(251) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-Info (10041): Inferred latch for "n_1[4]" at fp_adder.v(251) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-Info (10041): Inferred latch for "under" at fp_adder.v(251) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-Info (10041): Inferred latch for "frac_2[0]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[1]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[2]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[3]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[4]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[5]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[6]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[7]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[8]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[9]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[10]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[11]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_2[12]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[0]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[1]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[2]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[3]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[4]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[5]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[6]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[7]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[8]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[9]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[10]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[11]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "frac_1[12]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "exp[0]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "exp[1]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "exp[2]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "exp[3]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (10041): Inferred latch for "exp[4]" at fp_adder.v(194) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-Info (12128): Elaborating entity "clock_dividertest" for hierarchy "clock_dividertest:cd" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 58
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(540): truncated value with size 32 to match size of target (20) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 540
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(543): truncated value with size 32 to match size of target (20) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 543
-Info (12128): Elaborating entity "referenceKeypad" for hierarchy "referenceKeypad:k1" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 59
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(365): truncated value with size 32 to match size of target (4) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 365
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(369): truncated value with size 32 to match size of target (4) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 369
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(373): truncated value with size 32 to match size of target (4) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 373
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(377): truncated value with size 32 to match size of target (4) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 377
-Warning (10230): Verilog HDL assignment warning at fp_adder.v(393): truncated value with size 32 to match size of target (8) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 393
-Info (12128): Elaborating entity "display" for hierarchy "display:d1" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
-Info (12128): Elaborating entity "char_to_binary" for hierarchy "char_to_binary:cb1" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 61
-Warning (13012): Latch n_1[0] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal store[12] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch n_1[1] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal store[12] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch n_1[2] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal store[5] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch n_1[3] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal store[5] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[12] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[11] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[10] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[9] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[8] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[7] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[6] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[5] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[4] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[3] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[2] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[1] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_1[0] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[12] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[11] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[10] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[9] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[8] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[7] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[6] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[5] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[4] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[3] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[2] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[1] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
-Warning (13012): Latch frac_2[0] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 194
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal exp2[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 64
+Warning (10036): Verilog HDL or VHDL warning at fp_adder.v(34): object "sum1" assigned a value but never read File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 34
+Warning (10036): Verilog HDL or VHDL warning at fp_adder.v(53): object "pushout_11" assigned a value but never read File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 53
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(89): truncated value with size 32 to match size of target (2) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 89
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(100): truncated value with size 32 to match size of target (2) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 100
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(120): truncated value with size 32 to match size of target (2) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 120
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(136): truncated value with size 32 to match size of target (2) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 136
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(250): truncated value with size 32 to match size of target (15) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 250
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(251): truncated value with size 32 to match size of target (15) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 251
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(264): truncated value with size 32 to match size of target (15) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 264
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(279): truncated value with size 32 to match size of target (5) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 279
+Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(219): inferring latch(es) for variable "exp", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(219): inferring latch(es) for variable "frac_1", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(219): inferring latch(es) for variable "frac_2", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(219): inferring latch(es) for variable "sign", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(219): inferring latch(es) for variable "under", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Warning (10240): Verilog HDL Always Construct warning at fp_adder.v(219): inferring latch(es) for variable "n_1", which holds its previous value in one or more paths through the always construct File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "n_1[0]" at fp_adder.v(290) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+Info (10041): Inferred latch for "n_1[1]" at fp_adder.v(290) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+Info (10041): Inferred latch for "n_1[2]" at fp_adder.v(290) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+Info (10041): Inferred latch for "n_1[3]" at fp_adder.v(290) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+Info (10041): Inferred latch for "n_1[4]" at fp_adder.v(290) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+Info (10041): Inferred latch for "under" at fp_adder.v(290) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+Info (10041): Inferred latch for "sign" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[0]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[1]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[2]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[3]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[4]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[5]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[6]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[7]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[8]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[9]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[10]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[11]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_2[12]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[0]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[1]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[2]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[3]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[4]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[5]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[6]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[7]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[8]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[9]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[10]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[11]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "frac_1[12]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "exp[0]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "exp[1]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "exp[2]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "exp[3]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (10041): Inferred latch for "exp[4]" at fp_adder.v(219) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 219
+Info (12128): Elaborating entity "clock_dividertest" for hierarchy "clock_dividertest:cd" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(579): truncated value with size 32 to match size of target (20) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 579
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(582): truncated value with size 32 to match size of target (20) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 582
+Info (12128): Elaborating entity "referenceKeypad" for hierarchy "referenceKeypad:k1" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 61
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(404): truncated value with size 32 to match size of target (4) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 404
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(408): truncated value with size 32 to match size of target (4) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 408
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(412): truncated value with size 32 to match size of target (4) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 412
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(416): truncated value with size 32 to match size of target (4) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 416
+Warning (10230): Verilog HDL assignment warning at fp_adder.v(432): truncated value with size 32 to match size of target (8) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 432
+Info (12128): Elaborating entity "display" for hierarchy "display:d1" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 62
+Info (12128): Elaborating entity "char_to_binary" for hierarchy "char_to_binary:cb1" File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 63
+Warning (13012): Latch n_1[0] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal store[12] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 66
+Warning (13012): Latch n_1[1] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal store[12] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 66
+Warning (13012): Latch n_1[2] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal store[5] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 66
+Warning (13012): Latch n_1[3] has unsafe behavior File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 290
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal store[5] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 66
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "over" is stuck at GND File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 7
     Warning (13410): Pin "under" is stuck at VCC File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 7
@@ -593,16 +545,16 @@ Info (286030): Timing-Driven Synthesis is running
 Info (144001): Generated suppressed messages file C:/Users/hersa/Desktop/EE271_Project/271_Project/output_files/fp_adder.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 688 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 718 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 78 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 599 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 103 warnings
-    Info: Peak virtual memory: 4765 megabytes
-    Info: Processing ended: Wed May 12 23:32:26 2021
+    Info (21061): Implemented 629 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 51 warnings
+    Info: Peak virtual memory: 4782 megabytes
+    Info: Processing ended: Thu May 13 09:16:11 2021
     Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Total CPU time (on all processors): 00:00:26
 
 
 +------------------------------------------+

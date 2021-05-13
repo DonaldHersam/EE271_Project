@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Wed May 12 23:32:26 2021
+Analysis & Synthesis Status : Successful - Thu May 13 09:16:11 2021
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : fp_adder
 Top-level Entity Name : fp_adder
 Family : MAX 10
-Total logic elements : 582
-    Total combinational functions : 469
-    Dedicated logic registers : 305
-Total registers : 305
+Total logic elements : 611
+    Total combinational functions : 490
+    Dedicated logic registers : 317
+Total registers : 317
 Total pins : 89
 Total virtual pins : 0
 Total memory bits : 0

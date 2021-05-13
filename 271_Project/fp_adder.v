@@ -16,7 +16,9 @@ module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX
 
   reg f_over,f_under,fover;
   reg a;
+  reg x,x_1,x_2,x_3,x_4,x_5,x_6,x_7;
   reg screen_clear;
+  reg s,s_1,s_2;
   
  wire new_key;					// turned on when new key is read; automatically turned off
  wire [3:0] new_key_char;		// index of new key
@@ -28,7 +30,7 @@ module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX
   reg [12:0]frac1,frac2,frac_1,frac_2;
   reg [4:0]exp_diff;
   
-  reg sig1,sig2;
+  reg sig1,sig2,sig1_1,sig2_1,sig2_2,sig1_2;
   reg [15:0]sum1,sum_1;
   
   reg [14:0]number1,number2;
@@ -40,7 +42,7 @@ module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX
   
   reg[12:0]store,store_1,store_2,store2,store3,store_3;
   
-  reg sign,sign_1,sign_2,sign_3,sign_4,sign_5,sign_6;
+  reg sign,sign_1,sign_2,sign_3,sign_4,sign_5,sign_6,sign_7;
   reg[4:0] n,n_1;
   
   wire [3:0] binary_char;
@@ -50,7 +52,7 @@ module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX
  reg pushout,pushout_1,pushout_2,pushout_3,pushout_4,pushout_5,pushout_6,pushout_7;
  reg pushout_8,pushout_9,pushout_10,pushout_11;
    
-  assign sum=pushout_10?{sign_5,exp_8,store3[11:2]}:16'd0; //////////// display on 7 segment. 
+  assign sum=pushout_10?(x_7?{sign_7,exp_8,store3[11:2]}:{sign_7,exp_8,store3[12:3]}):16'd0; //////////// display on 7 segment. display on 7 segment. 
 
 //initial count<=0;
 
@@ -82,6 +84,7 @@ char_to_binary cb1(new_key, new_key_char, binary_char);
          pushout_9<=0;pushout_10<=0;pushout_11<=0;
          sum1<=0;
          add2<=0;
+			//x<=0;
          
          count<=count+1; 
 			state_led<=2'b00;
@@ -145,44 +148,66 @@ char_to_binary cb1(new_key, new_key_char, binary_char);
       num2<=number2;
       pushout_4<=pushout_3;
       exp_2<=exp;
+		x_1<=x;
+      sign_1<=sign;
+ 
+ //#1 $display("num1 is %b num2 is %b, exp_2 is %b",num1,num2,exp_2);
       
       fsum<=fsum_1;
       exp_3<=exp_2;
       pushout_5<=pushout_4;
+		x_2<=x_1;
+      sign_2<=sign_1;
+   // #1 $display("fsum is %b and exp_3 is %b",fsum,exp_3);
       
       
       add<=add_1;
-      sign<=sign_1;
+      //sign<=sign_1;
       pushout_6<=pushout_5;
       exp_4<=exp_3;
+		x_3<=x_2;
+      sign_3<=sign_2;
+// #1 $display("add is is %b and sign is %b exp_4 is %b",add,sign_1,exp_4); 
      
       
       fover<=f_over;
       exp_5<=exp_4;
-      sign_2<=sign_1; 
+      //sign_2<=sign_1; 
       add2<=add; 
-      pushout_7<=pushout_6; 
+      pushout_7<=pushout_6;
+      x_4<=x_3;
+      sign_4<=sign_3;
+  // #1 $display("fover is is %b and sign is %b exp_5 is %b",fover,sign_2,exp_5);
+  // #1 $display("add2 is is %b",add2); 
        
       store<=store_1;
       exp_6<=exp6;
-      sign_3<=sign_2;
-      pushout_8<=pushout_7;  
+      sign_5<=sign_4;
+      pushout_8<=pushout_7;
+      x_5<=x_4;
+    // #1 $display("store is is %b and sign is %b exp_4 is %b",store,sign_3,exp_6); 
       
       
       store2<=store_2;
       n<=n_1;
       z<=z_1;
       exp_7<=exp7;
-      sign_4<=sign_3;
+      sign_6<=sign_5;
       pushout_9<=pushout_8;
+		x_6<=x_5;
+    // #1 $display("store2 is is %b and sign_4 is %b exp_7 is %b",store2,sign_4,exp_7);   
       
   
       
       store3<=store_3;
       exp_8<=exp8;
-      sign_5<=sign_4;
+      sign_7<=sign_6;
       pushout_10<=pushout_9;
-//		state_led<=2'b00;
+      x_7<=x_6;
+    // #1 $display("store3 is is %b and sign_5 is %b exp_8 is %b",store3,sign_5,exp_8);
+      #1 $display("sum is %h at time %d",sum,$time);
+   // #1 $display("store3 is is %b and sign_5 is %b exp_8 is %b",store3,sign_5,exp_8);
+
 		
 
            
@@ -192,16 +217,24 @@ end
  always@(*)
         begin
           if(a)
-           if(exp1==exp2)
-            // $display("equal exponents");
-           exp=exp1;
+           if(exp1==exp2) begin
+             $display("equal exponents");
+                 exp=exp1; 
+                 frac_1=frac1;
+                  frac_2=frac2;
+              if(frac_1>frac_2)
+                sign=sig1;
+              else
+                sign=sig2;
+            end
            
              else if(exp1<exp2)
                    begin
                
                   frac_1=frac1>>(exp2-exp1);
                   exp=exp2;
-                  frac_2=frac2; 
+                  frac_2=frac2;
+						sign=sig2; 
                  end
            
              else 
@@ -209,21 +242,27 @@ end
                   
                   frac_2=frac2>>(exp1-exp2);
                   exp=exp1;
-                  frac_1=frac1; 
+                  frac_1=frac1;
+                  sign=sig1;  
                  end   
            
             
           number1 = (sig1==0)?{2'b00,frac_1}:(~{2'b00,frac_1}+1); 
           number2 = (sig2==0)?{2'b00,frac_2}:(~{2'b00,frac_2}+1);
           
-          
+          if(sig1==0&&sig2==0)
+              x=0;
+            else if(sig1&&sig2)
+              x=0;
+            else
+              x=1;  
         
          
           fsum_1=num1+num2;
           
           
           add_1=(fsum[14]==0)?fsum:~fsum +1;
-          sign_1=fsum[14];
+//          sign_1=fsum[14];
           
  
          f_over=add[14]^add[13];
@@ -251,7 +290,7 @@ end
            if(exp_6==5'd0) 
             begin
              under=1; 
-             store_2=store[11:2];
+             store_2={store[11:2],3'b000};
              exp7=exp_6;
               z_1=0;
               n_1=0;
@@ -259,7 +298,7 @@ end
            else if(store[12]==1'b1)
             begin
              // $display("yes");
-             store_2=store[11:2]; 
+             store_2={store[11:2],3'b000}; 
              exp7=exp_6; 
               z_1=0;
               n_1=0;
