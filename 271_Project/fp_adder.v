@@ -20,6 +20,8 @@ module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX
   reg screen_clear;
   reg s,s_1,s_2;
   
+  reg [15:0] display_word;
+  
  wire new_key;					// turned on when new key is read; automatically turned off
  wire [3:0] new_key_char;		// index of new key
   
@@ -59,8 +61,16 @@ module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX
 
 clock_dividertest cd (clkfast, clk);
 referenceKeypad k1(LEDR, GPIO_1, clk, new_key, new_key_char);
-display d1(new_key, new_key_char, screen_clear, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+//display d1(new_key, new_key_char, screen_clear, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 char_to_binary cb1(new_key, new_key_char, binary_char);
+display_vector dv1(display_word,	new_key, screen_clear,
+	HEX0,
+	HEX1,
+	HEX2,
+	HEX3,
+	HEX4,
+	HEX5
+);
 
   
   always@(posedge clk)
@@ -94,6 +104,8 @@ char_to_binary cb1(new_key, new_key_char, binary_char);
          //$display("input1 is %h at time %d",inp,$time); ///////////// arduino display
          screen_clear<=1;
 			inp <= {inp[11:0], binary_char[3:0]};
+			#5
+			display_word <= inp;
 			sig1<= inp[15];
          exp1<= inp[14:10];
          frac1[11:0]<= {inp[9:0],2'b00};
@@ -449,20 +461,20 @@ endmodule
 module char_to_binary(input new_key, input [3:0] new_key_char, output reg [3:0] binary_char);
 always@(posedge new_key) begin
 	case (new_key_char) 
-		 0 : binary_char <= ~4'b0001; // 1
-		 1 : binary_char <= ~4'b0010; // 2
-		 2 : binary_char <= ~4'b0011; // 3
-		 3 : binary_char <= ~4'b1010; // A
-		 4 : binary_char <= ~4'b0100; // 4
-		 5 : binary_char <= ~4'b0101; // 5
-		 6 : binary_char <= ~4'b0110; // 6
-		 7 : binary_char <= ~4'b1011; // b
-		 8 : binary_char <= ~4'b0111; // 7
-		 9 : binary_char <= ~4'b1000; // 8
-		10 : binary_char <= ~4'b1001; // 9
-		11 : binary_char <= ~4'b1100; // C
-		13 : binary_char <= ~4'b0000; // 0
-		15 : binary_char <= ~4'b1101; // d
+		 0 : binary_char <= 4'b0001; // 1
+		 1 : binary_char <= 4'b0010; // 2
+		 2 : binary_char <= 4'b0011; // 3
+		 3 : binary_char <= 4'b1010; // A
+		 4 : binary_char <= 4'b0100; // 4
+		 5 : binary_char <= 4'b0101; // 5
+		 6 : binary_char <= 4'b0110; // 6
+		 7 : binary_char <= 4'b1011; // b
+		 8 : binary_char <= 4'b0111; // 7
+		 9 : binary_char <= 4'b1000; // 8
+		10 : binary_char <= 4'b1001; // 9
+		11 : binary_char <= 4'b1100; // C
+		13 : binary_char <= 4'b0000; // 0
+		15 : binary_char <= 4'b1101; // d
 	endcase
 end
 endmodule
@@ -548,11 +560,169 @@ if (screen_clear==1) begin
 	endcase
 end
 
-else if (screen_clear == 0) begin end
+else if (screen_clear == 0) begin 
+hex0 <= 127;
+hex1 <= 127;
+hex2 <= 127;
+hex3 <= 127;
+hex4 <= 127;
+hex5 <= 127;
+end
+
+
 
 end
 
 endmodule
+
+
+
+
+
+module display_vector(
+	display_word,
+	new_key,
+	screen_clear,
+	HEX0,
+	HEX1,
+	HEX2,
+	HEX3,
+	HEX4,
+	HEX5
+);
+
+// ----------------------------------------------------------------------------
+// Segment Display
+input screen_clear,new_key;					// turned on when new key is read; automatically turned off
+input [15:0] display_word;		// index of new key
+
+output [6:0] HEX0;
+output [6:0] HEX1;
+output [6:0] HEX2;
+output [6:0] HEX3;
+output [6:0] HEX4;
+output [6:0] HEX5;
+
+
+reg [6:0] hex0 = 127;
+reg [6:0] hex1 = 127;
+reg [6:0] hex2 = 127;
+reg [6:0] hex3 = 127;
+reg [6:0] hex4 = 127;
+reg [6:0] hex5 = 127;
+
+
+assign HEX0 = hex0;
+assign HEX1 = hex1;
+assign HEX2 = hex2;
+assign HEX3 = hex3;
+assign HEX4 = hex4;
+assign HEX5 = hex5;
+
+
+/* Insert new char at the end of display
+ * and push all the other characters left.
+ * This block is run when "new_key" flag is set (<=> new key was just pressed).
+ */
+
+always@(posedge new_key) begin
+
+if (screen_clear==1) begin
+	// Push characters left.
+
+
+//	hex3 <= hex2;
+//	hex2 <= hex1;
+//	hex1 <= hex0;
+
+	// Show a new character.
+	case (display_word[3:0]) 
+		 2'b0001 : hex0 <= ~7'b0000110; // 1
+		 2'b0010 : hex0 <= ~7'b1011011; // 2
+		 2'b0011 : hex0 <= ~7'b1001111; // 3
+		 2'b1010 : hex0 <= ~7'b1110111; // A
+		 2'b0100 : hex0 <= ~7'b1100110; // 4
+		 2'b0101 : hex0 <= ~7'b1101101; // 5
+		 2'b0110 : hex0 <= ~7'b1111101; // 6
+		 2'b1011 : hex0 <= ~7'b1111100; // b
+		 2'b0111 : hex0 <= ~7'b0000111; // 7
+		 2'b1000 : hex0 <= ~7'b1111111; // 8
+		 2'b1001 : hex0 <= ~7'b1101111; // 9
+		 2'b1100 : hex0 <= ~7'b0111001; // C
+		 2'b0000 : hex0 <= ~7'b0111111; // 0
+		 2'b1101 : hex0 <= ~7'b1011110; // d
+	endcase
+	
+	case (display_word[7:4]) 
+		 2'b0001 : hex1 <= ~7'b0000110; // 1
+		 2'b0010 : hex1 <= ~7'b1011011; // 2
+		 2'b0011 : hex1 <= ~7'b1001111; // 3
+		 2'b1010 : hex1 <= ~7'b1110111; // A
+		 2'b0100 : hex1 <= ~7'b1100110; // 4
+		 2'b0101 : hex1 <= ~7'b1101101; // 5
+		 2'b0110 : hex1 <= ~7'b1111101; // 6
+		 2'b1011 : hex1 <= ~7'b1111100; // b
+		 2'b0111 : hex1 <= ~7'b0000111; // 7
+		 2'b1000 : hex1 <= ~7'b1111111; // 8
+		 2'b1001 : hex1 <= ~7'b1101111; // 9
+		 2'b1100 : hex1 <= ~7'b0111001; // C
+		 2'b0000 : hex1 <= ~7'b0111111; // 0
+		 2'b1101 : hex1 <= ~7'b1011110; // d
+	endcase
+	
+	case (display_word[11:8]) 
+		 2'b0001 : hex2 <= ~7'b0000110; // 1
+		 2'b0010 : hex2 <= ~7'b1011011; // 2
+		 2'b0011 : hex2 <= ~7'b1001111; // 3
+		 2'b1010 : hex2 <= ~7'b1110111; // A
+		 2'b0100 : hex2 <= ~7'b1100110; // 4
+		 2'b0101 : hex2 <= ~7'b1101101; // 5
+		 2'b0110 : hex2 <= ~7'b1111101; // 6
+		 2'b1011 : hex2 <= ~7'b1111100; // b
+		 2'b0111 : hex2 <= ~7'b0000111; // 7
+		 2'b1000 : hex2 <= ~7'b1111111; // 8
+		 2'b1001 : hex2 <= ~7'b1101111; // 9
+		 2'b1100 : hex2 <= ~7'b0111001; // C
+		 2'b0000 : hex2 <= ~7'b0111111; // 0
+		 2'b1101 : hex2 <= ~7'b1011110; // d
+	endcase
+	
+	
+	case (display_word[15:12]) 
+		 2'b0001 : hex3 <= ~7'b0000110; // 1
+		 2'b0010 : hex3 <= ~7'b1011011; // 2
+		 2'b0011 : hex3 <= ~7'b1001111; // 3
+		 2'b1010 : hex3 <= ~7'b1110111; // A
+		 2'b0100 : hex3 <= ~7'b1100110; // 4
+		 2'b0101 : hex3 <= ~7'b1101101; // 5
+		 2'b0110 : hex3 <= ~7'b1111101; // 6
+		 2'b1011 : hex3 <= ~7'b1111100; // b
+		 2'b0111 : hex3 <= ~7'b0000111; // 7
+		 2'b1000 : hex3 <= ~7'b1111111; // 8
+		 2'b1001 : hex3 <= ~7'b1101111; // 9
+		 2'b1100 : hex3 <= ~7'b0111001; // C
+		 2'b0000 : hex3 <= ~7'b0111111; // 0
+		 2'b1101 : hex3 <= ~7'b1011110; // d
+	endcase
+end
+
+else if (screen_clear == 0) begin 
+hex0 <= 127;
+hex1 <= 127;
+hex2 <= 127;
+hex3 <= 127;
+hex4 <= 127;
+hex5 <= 127;
+end
+
+
+
+end
+
+endmodule
+
+
+
 
 
 
