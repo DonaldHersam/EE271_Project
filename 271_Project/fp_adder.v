@@ -17,6 +17,9 @@ module fp_adder(clkfast,S1,inp,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3,
   reg f_over,f_under,fover;
   reg a;
   
+ wire new_key;					// turned on when new key is read; automatically turned off
+ wire [3:0] new_key_char;		// index of new key
+  
 
   
   reg [1:0] count = 0; //////////////////// state transitioning.
@@ -50,7 +53,8 @@ module fp_adder(clkfast,S1,inp,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3,
 
 
 clock_dividertest cd (clkfast, clk);
-referenceKeypad k1(LEDR, GPIO_1, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+referenceKeypad k1(LEDR, GPIO_1, clk, new_key, new_key_char);
+display d1(new_key, new_key_char, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
   
   always@(posedge clk)
@@ -303,12 +307,8 @@ module referenceKeypad(
 	LEDR,
 	GPIO_1,
 	clk,
-	HEX0,
-	HEX1,
-	HEX2,
-	HEX3,
-	HEX4,
-	HEX5
+	new_key,
+	new_key_char
 );
 
 // Keypad Reading
@@ -326,8 +326,8 @@ reg [3:0] GOUT = 4'bzzzz;	// GPIO outputs
 reg [15:0] OUT;				// LED outputs
 reg [7:0] index;				// index of read row
 reg [1:0] status;				// 0 = preparing to read a row, 1 = reading row, 2 = end of read
-reg new_key;					// turned on when new key is read; automatically turned off
-reg [3:0] new_key_char;		// index of new key
+output reg new_key;					// turned on when new key is read; automatically turned off
+output reg [3:0] new_key_char;		// index of new key
 
 assign GPIO_1 = { GOUT, 4'bzzzz };  // GPIO_1 used bidirectional
 assign LEDR[15:0] = OUT;				// only some LEDs are used to show pushed buttons
@@ -392,8 +392,28 @@ always@(posedge clk) begin
 	end;
 end
 
+endmodule
+
+
+
+
+
+
+module display(
+	new_key,
+	new_key_char,
+	HEX0,
+	HEX1,
+	HEX2,
+	HEX3,
+	HEX4,
+	HEX5
+);
+
 // ----------------------------------------------------------------------------
 // Segment Display
+input new_key;					// turned on when new key is read; automatically turned off
+input [3:0] new_key_char;		// index of new key
 
 output [6:0] HEX0;
 output [6:0] HEX1;

@@ -1,5 +1,5 @@
 Fitter report for fp_adder
-Wed May 12 21:01:39 2021
+Wed May 12 21:34:48 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -69,7 +69,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Wed May 12 21:01:39 2021       ;
+; Fitter Status                      ; Successful - Wed May 12 21:34:48 2021       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; fp_adder                                    ;
 ; Top-level Entity Name              ; fp_adder                                    ;
@@ -155,13 +155,13 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.08        ;
+; Average used               ; 1.10        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   2.6%      ;
-;     Processors 3-4         ;   2.5%      ;
+;     Processor 2            ;   3.5%      ;
+;     Processors 3-4         ;   3.5%      ;
 +----------------------------+-------------+
 
 
@@ -1158,7 +1158,8 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+--------------------------------+-------------------+--------------+
 ; |fp_adder                  ; 550 (411)   ; 298 (199)                 ; 0 (0)         ; 0           ; 0    ; 1          ; 0            ; 0       ; 0         ; 105  ; 0            ; 252 (212)    ; 88 (47)           ; 210 (152)        ; 0          ; |fp_adder                      ; fp_adder          ; work         ;
 ;    |clock_dividertest:cd|  ; 36 (36)     ; 21 (21)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 15 (15)      ; 1 (1)             ; 20 (20)          ; 0          ; |fp_adder|clock_dividertest:cd ; clock_dividertest ; work         ;
-;    |referenceKeypad:k1|    ; 103 (103)   ; 78 (78)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 25 (25)      ; 40 (40)           ; 38 (38)          ; 0          ; |fp_adder|referenceKeypad:k1   ; referenceKeypad   ; work         ;
+;    |display:d1|            ; 43 (43)     ; 42 (42)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 35 (35)           ; 7 (7)            ; 0          ; |fp_adder|display:d1           ; display           ; work         ;
+;    |referenceKeypad:k1|    ; 60 (60)     ; 36 (36)                   ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 24 (24)      ; 5 (5)             ; 31 (31)          ; 0          ; |fp_adder|referenceKeypad:k1   ; referenceKeypad   ; work         ;
 +----------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+--------------------------------+-------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1411,6 +1412,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; clkfast                              ; PIN_P11            ; 21      ; Clock        ; yes    ; Global Clock         ; GCLK19           ; --                        ;
 ; clock_dividertest:cd|clock_out       ; FF_X55_Y52_N31     ; 24      ; Clock        ; no     ; --                   ; --               ; --                        ;
 ; clock_dividertest:cd|clock_out       ; FF_X55_Y52_N31     ; 213     ; Clock        ; yes    ; Global Clock         ; GCLK12           ; --                        ;
+; display:d1|hex0[0]~0                 ; LCCOMB_X76_Y32_N16 ; 7       ; Clock enable ; no     ; --                   ; --               ; --                        ;
 ; frac_1[12]~10                        ; LCCOMB_X45_Y51_N14 ; 26      ; Latch enable ; yes    ; Global Clock         ; GCLK11           ; --                        ;
 ; fsum[14]                             ; FF_X52_Y50_N31     ; 17      ; Sync. load   ; no     ; --                   ; --               ; --                        ;
 ; referenceKeypad:k1|LessThan1~2       ; LCCOMB_X74_Y32_N4  ; 8       ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
@@ -1418,7 +1420,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; referenceKeypad:k1|OUT[12]~3         ; LCCOMB_X77_Y32_N14 ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
 ; referenceKeypad:k1|OUT[4]~1          ; LCCOMB_X77_Y32_N28 ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
 ; referenceKeypad:k1|OUT[8]~2          ; LCCOMB_X75_Y32_N10 ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; referenceKeypad:k1|hex0[0]~0         ; LCCOMB_X76_Y32_N16 ; 7       ; Clock enable ; no     ; --                   ; --               ; --                        ;
 ; referenceKeypad:k1|new_key           ; FF_X76_Y32_N29     ; 42      ; Clock        ; yes    ; Global Clock         ; GCLK8            ; --                        ;
 ; referenceKeypad:k1|new_key_char[1]~3 ; LCCOMB_X76_Y32_N20 ; 5       ; Clock enable ; no     ; --                   ; --               ; --                        ;
 ; referenceKeypad:k1|status.10         ; FF_X74_Y32_N27     ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
@@ -1987,44 +1988,44 @@ Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Tim
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (176353): Automatically promoted node clkfast~input (placed in PIN P11 (CLK7p, DIFFIO_TX_RX_B20p, DIFFOUT_B20p, High_Speed)) File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 3
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G19
-Info (176353): Automatically promoted node clock_dividertest:cd|clock_out  File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 467
+Info (176353): Automatically promoted node clock_dividertest:cd|clock_out  File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 487
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node store[12] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[11] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[10] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[9] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[6] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[8] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[7] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[3] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
-        Info (176357): Destination node store[2] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 56
+        Info (176357): Destination node store[12] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[11] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[10] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[9] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[6] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[8] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[7] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[4] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[3] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
+        Info (176357): Destination node store[2] File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 60
         Info (176358): Non-global destination nodes limited to 10 nodes
 Info (176353): Automatically promoted node referenceKeypad:k1|new_key  File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 329
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
         Info (176357): Destination node referenceKeypad:k1|new_key~3 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 329
-Info (176353): Automatically promoted node frac_1[12]~10  File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 182
+Info (176353): Automatically promoted node frac_1[12]~10  File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 186
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
 Info (176353): Automatically promoted node a  File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 18
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node frac_1[12]~10 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 182
+        Info (176357): Destination node frac_1[12]~10 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 186
         Info (176357): Destination node a~0 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 18
-Info (176353): Automatically promoted node Equal6~3  File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 231
+Info (176353): Automatically promoted node Equal6~3  File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 235
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
-        Info (176357): Destination node exp7[1]~2 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 23
-        Info (176357): Destination node store_2[0]~0 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
-        Info (176357): Destination node store_2[2]~1 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
-        Info (176357): Destination node store_2[1]~2 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
-        Info (176357): Destination node store_2[9]~3 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
-        Info (176357): Destination node store_2[3]~4 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
-        Info (176357): Destination node store_2[4]~5 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
-        Info (176357): Destination node store_2[5]~6 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
-        Info (176357): Destination node store_2[6]~7 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
-        Info (176357): Destination node store_2[7]~8 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 37
+        Info (176357): Destination node exp7[1]~2 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 26
+        Info (176357): Destination node store_2[0]~0 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
+        Info (176357): Destination node store_2[2]~1 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
+        Info (176357): Destination node store_2[1]~2 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
+        Info (176357): Destination node store_2[9]~3 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
+        Info (176357): Destination node store_2[3]~4 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
+        Info (176357): Destination node store_2[4]~5 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
+        Info (176357): Destination node store_2[5]~6 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
+        Info (176357): Destination node store_2[6]~7 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
+        Info (176357): Destination node store_2[7]~8 File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 40
         Info (176358): Non-global destination nodes limited to 10 nodes
 Info (176233): Starting register packing
 Info (176235): Finished register packing
@@ -2043,7 +2044,7 @@ Info (176215): I/O bank details before I/O pin placement
         Info (176213): I/O bank number 6 does not use VREF pins and has 2.5V VCCIO pins. 27 total pin(s) used --  33 pins available
         Info (176213): I/O bank number 7 does not use VREF pins and has 2.5V VCCIO pins. 19 total pin(s) used --  33 pins available
         Info (176213): I/O bank number 8 does not use VREF pins and has undetermined VCCIO pins. 4 total pin(s) used --  32 pins available
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (14896): Fitter has disabled Advanced Physical Optimization because it is not supported for the current family.
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
@@ -2056,12 +2057,12 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
-Info (11888): Total time spent on timing analysis during the Fitter is 0.53 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.52 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:03
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:02
 Warning (169064): Following 4 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
     Info (169065): Pin GPIO_1[0] has a permanently disabled output enable File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 15
     Info (169065): Pin GPIO_1[1] has a permanently disabled output enable File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 15
@@ -2069,10 +2070,10 @@ Warning (169064): Following 4 pins have no output enable or a GND or VCC output 
     Info (169065): Pin GPIO_1[3] has a permanently disabled output enable File: C:/Users/hersa/Desktop/EE271_Project/271_Project/fp_adder.v Line: 15
 Info (144001): Generated suppressed messages file C:/Users/hersa/Desktop/EE271_Project/271_Project/output_files/fp_adder.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 5653 megabytes
-    Info: Processing ended: Wed May 12 21:01:39 2021
-    Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:00:36
+    Info: Peak virtual memory: 5645 megabytes
+    Info: Processing ended: Wed May 12 21:34:48 2021
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:26
 
 
 +----------------------------+
