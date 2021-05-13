@@ -1,15 +1,15 @@
-Fitter Status : Successful - Wed May 12 23:02:12 2021
+Fitter Status : Successful - Wed May 12 23:32:43 2021
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : fp_adder
 Top-level Entity Name : fp_adder
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 535 / 49,760 ( 1 % )
-    Total combinational functions : 462 / 49,760 ( < 1 % )
-    Dedicated logic registers : 284 / 49,760 ( < 1 % )
-Total registers : 284
-Total pins : 105 / 360 ( 29 % )
+Total logic elements : 551 / 49,760 ( 1 % )
+    Total combinational functions : 469 / 49,760 ( < 1 % )
+    Dedicated logic registers : 305 / 49,760 ( < 1 % )
+Total registers : 305
+Total pins : 89 / 360 ( 25 % )
 Total virtual pins : 0
 Total memory bits : 0 / 1,677,312 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )

@@ -1,5 +1,5 @@
-module fp_adder(clkfast,S1,inp,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR, GPIO_1);             
-  input [15:0]inp; /////////////////////////////////////////// input
+module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR, GPIO_1);             
+  reg [15:0]inp; /////////////////////////////////////////// input
   input clkfast;
   input [1:0] S1;
   output [15:0]sum;
@@ -16,6 +16,7 @@ module fp_adder(clkfast,S1,inp,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3,
 
   reg f_over,f_under,fover;
   reg a;
+  reg screen_clear;
   
  wire new_key;					// turned on when new key is read; automatically turned off
  wire [3:0] new_key_char;		// index of new key
@@ -56,7 +57,7 @@ module fp_adder(clkfast,S1,inp,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3,
 
 clock_dividertest cd (clkfast, clk);
 referenceKeypad k1(LEDR, GPIO_1, clk, new_key, new_key_char);
-display d1(new_key, new_key_char, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+display d1(new_key, new_key_char, screen_clear, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 char_to_binary cb1(new_key, new_key_char, binary_char);
 
   
@@ -65,6 +66,7 @@ char_to_binary cb1(new_key, new_key_char, binary_char);
       if(S1 == 2'b00)
        begin
         // $display("reset at time %d",$time); ///////////// arduino 
+		  screen_clear<=0;
          count<=2'b00;
          over<=0;
          f_under<=0;
@@ -87,8 +89,8 @@ char_to_binary cb1(new_key, new_key_char, binary_char);
       else if(S1 == 2'b01)
        begin
          //$display("input1 is %h at time %d",inp,$time); ///////////// arduino display
-         
-			
+         screen_clear<=1;
+			inp <= {inp[11:0], binary_char[3:0]};
 			sig1<= inp[15];
          exp1<= inp[14:10];
          frac1[11:0]<= {inp[9:0],2'b00};
@@ -107,7 +109,9 @@ char_to_binary cb1(new_key, new_key_char, binary_char);
       else if(S1 == 2'b11)
        begin
          //$display("input2 is %h at time %d",inp,$time); ///////////// arduino display
-         sig2<= inp[15];
+         screen_clear<=1;
+			inp <= {inp[11:0], binary_char[3:0]};
+			sig2<= inp[15];
          exp2<= inp[14:10];
          frac2[11:0]<={inp[9:0],2'b00};
          count<=count+1; 
@@ -125,7 +129,8 @@ char_to_binary cb1(new_key, new_key_char, binary_char);
       else if(S1 == 2'b10)
          begin    
             // $display("FPA sum at time %d",$time);/////////////////////// arduino display.
-             count<=count+1;
+             screen_clear<=1;
+				 count<=count+1;
              a<=1;
             pushout_3<=pushout_2;
 				state_led<=2'b11;
@@ -431,6 +436,7 @@ endmodule
 module display(
 	new_key,
 	new_key_char,
+	screen_clear,
 	HEX0,
 	HEX1,
 	HEX2,
@@ -441,7 +447,7 @@ module display(
 
 // ----------------------------------------------------------------------------
 // Segment Display
-input new_key;					// turned on when new key is read; automatically turned off
+input new_key,screen_clear;					// turned on when new key is read; automatically turned off
 input [3:0] new_key_char;		// index of new key
 
 output [6:0] HEX0;
@@ -472,7 +478,10 @@ assign HEX5 = hex5;
  * and push all the other characters left.
  * This block is run when "new_key" flag is set (<=> new key was just pressed).
  */
+
 always@(posedge new_key) begin
+
+if (screen_clear==1) begin
 	// Push characters left.
 
 //	hex5 <= hex4;
@@ -498,6 +507,10 @@ always@(posedge new_key) begin
 		13 : hex0 <= ~7'b0111111; // 0
 		15 : hex0 <= ~7'b1011110; // d
 	endcase
+end
+
+else if (screen_clear == 0) begin end
+
 end
 
 endmodule
