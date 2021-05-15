@@ -1,4 +1,4 @@
-module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR, GPIO_1);             
+module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR, GPIO_1, toArduino);             
   reg [15:0]inp; /////////////////////////////////////////// input
   input clkfast;
   input [1:0] S1;
@@ -12,6 +12,7 @@ module fp_adder(clkfast,S1,sum,state_led,over,under, HEX0, HEX1, HEX2, HEX3, HEX
 	output [6:0] HEX4;
 	output [6:0] HEX5;
 	output [15:0] LEDR;
+	output reg [1:0] toArduino;
 	inout [7:0] GPIO_1;
 
   reg f_over,f_under,fover;
@@ -95,6 +96,7 @@ display_vector dv1(display_word,	new_key, screen_clear,
          pushout_9<=0;pushout_10<=0;pushout_11<=0;
          sum1<=0;
          add2<=0;
+			toArduino<=2'b00;
 			
 			inp <= 15'b0;
 			//x<=0;
@@ -129,6 +131,7 @@ display_vector dv1(display_word,	new_key, screen_clear,
          
          pushout_1<=pushout;
 			state_led<=2'b01;
+			toArduino<=2'b01;
        end
       
       else if(S1 == 2'b11)
@@ -159,6 +162,7 @@ display_vector dv1(display_word,	new_key, screen_clear,
          
          pushout_2<=pushout_1;
 			state_led<=2'b10;
+			toArduino<=2'b10;
        end   
         
       else if(S1 == 2'b10)
@@ -170,6 +174,7 @@ display_vector dv1(display_word,	new_key, screen_clear,
              a<=1;
             pushout_3<=pushout_2;
 				state_led<=2'b11;
+				toArduino<=2'b11;
          end
 
 		

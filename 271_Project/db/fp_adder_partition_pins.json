@@ -252,6 +252,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "toArduino[0]",
+					"strict" : false
+				},
+				{
+					"name" : "toArduino[1]",
+					"strict" : false
+				},
+				{
 					"name" : "GPIO_1[0]",
 					"strict" : false
 				},
